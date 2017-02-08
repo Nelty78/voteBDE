@@ -1,10 +1,13 @@
-var express = require('express')
-var app = express()
+'use strict';
 
-app.get('/', function (req, res) {
-  res.send('Hello World!')
-})
+var express = require('express'),
+    routes = require('./app/routes/index.js');
+
+var app = express();
+app.use(express.static(__dirname + '/public'));
+
+routes(app);
 
 app.listen(8080, function () {
-  console.log('Example app listening on port 8080!')
-})
+    console.log('Listening on port 8080...');
+});

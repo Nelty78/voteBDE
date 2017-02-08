@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>First Node App</title>
+        <meta name="google-signin-client_id" content="282525321476-nopagupo09jbvbvnh8frecrr7rjlrtsj.apps.googleusercontent.com">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="index.js"></script> 
+        <link href="css/style.css" rel="stylesheet">
+
+    </head>
+    <body>
+<div class="container-fluid">
+    <img class="img-responsive img-rounded logo img-left">
+    <img class="img-responsive img-rounded logo img-right">
+    <div class="jumbotron"><div class="logout"></div>
+        <p class="text-center" id="welcome">Afin de voter, connecte-toi à ton <b>adresse ESCP</b>.</p>
+        <div class="g-signin2 center-block" data-onsuccess="onSignIn" id="welcome"></div>
+        <br><p class="text-center" id="login"></p>
+        
+        <form class="text-center hide" id="form"> 
+            Vous souhaitez voter pour :<br><br>
+            <label for="radio-one" class="radio-inline">
+                <input type="radio" name="exampleRadios" id="radio-one" value="radio-one"/>
+                <i id="radio-one"></i> <span id="name1"></span>
+            </label>
+            <label for="radio-two" class="radio-inline">
+                <input type="radio" name="exampleRadios" id="radio-two" value="doggie"/>
+                <i id="radio-two"></i> <span id="name2"></span>
+            </label><br><br>
+            <button type="submit" class="myButton">Voter</button>
+        </form>
+    </div>
+</div>
+    </body>
+</html>
