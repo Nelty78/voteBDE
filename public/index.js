@@ -1,6 +1,6 @@
 var rand = Math.random();
-var src_ted = "./img/logoted.jpg";
-var src_stacks = "./img/logostacks.png";
+var src_ted = "public/img/logoted.jpg";
+var src_stacks = "public/img/logostacks.png";
 var names = ["Stacks & Furious", "Ted'Quila"];
 
 $( document ).ready(function() {
@@ -12,7 +12,9 @@ $( document ).ready(function() {
       $(" #name1 ").text(names[0]);
       $(" #name2 ").text(names[1]);
       $(" #radio-one ").css('color', 'RGB(156,21,29)');
-        $(" #radio-two ").css('color', 'RGB(244,232,52)');
+      $(" #radio-one ").attr('value', 'stacks');
+      $(" #radio-two ").css('color', 'RGB(244,232,52)');
+      $(" #radio-two ").attr('value', 'ted');
       }
     else {
       $(" body ").css('background', 'linear-gradient(90deg, RGB(244,232,52) 50%, RGB(156,21,29) 50%)'); 
@@ -20,8 +22,10 @@ $( document ).ready(function() {
       $(" .img-right ").attr('src', src_stacks);
       $(" #name1 ").text(names[1]);
       $(" #name2 ").text(names[0]);
-          $(" #radio-one ").css('color', 'RGB(244,232,52)');
-       $(" #radio-two ").css('color', 'RGB(156,21,29)');
+      $(" #radio-one ").css('color', 'RGB(244,232,52)');
+      $(" #radio-one ").attr('value', 'ted');
+      $(" #radio-two ").css('color', 'RGB(156,21,29)');
+      $(" #radio-two ").attr('value', 'stacks');
     
     }
 
