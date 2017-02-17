@@ -46,9 +46,9 @@ app.use(passport.session());
 
 
 passport.use(new GoogleStrategy({
-    clientID: '282525321476-nopagupo09jbvbvnh8frecrr7rjlrtsj.apps.googleusercontent.com',
-    clientSecret: 'QNP6X8HnZ5bfshg9FBeBhSi9',
-    callbackURL: "https://bde-nelty78.c9users.io/auth/google/callback"
+    clientID: process.env.GOOGLE_CLIENT,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.CALLBACK_URL
   },
   function(accessToken, refreshToken, profile, done) {
         var user = new User();
@@ -69,7 +69,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 
-mongo.connect('mongodb://admin:admin@ds145289.mlab.com:45289/bde', function (err, db) {
+mongo.connect(process.env.MONGODB_URI, function (err, db) {
 
     if (err) {
         throw new Error('Database failed to connect!');
