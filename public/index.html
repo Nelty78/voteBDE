@@ -2,15 +2,16 @@
 <html>
     <head>
         <title>Vote BDE 2017</title>
-        <meta name="google-signin-client_id" content="282525321476-nopagupo09jbvbvnh8frecrr7rjlrtsj.apps.googleusercontent.com">
+        <!--<meta name="google-signin-client_id" content="282525321476-nopagupo09jbvbvnh8frecrr7rjlrtsj.apps.googleusercontent.com"> -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+        <!-- <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script> -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript" src="public/index.js"></script> 
         <link href="public/css/style.css" rel="stylesheet">
+        <link href="public/css/admin/style.css" rel="stylesheet">
 
     </head>
     <body>
@@ -18,13 +19,22 @@
 <div class="container-fluid">
     <img class="img-responsive img-rounded logo img-left">
     <img class="img-responsive img-rounded logo img-right">
-    <div class="jumbotron"><div class="logout"></div>
-        <p class="text-center" id="welcome">Afin de voter, connecte-toi à ton <b>adresse ESCP</b>.</p>
-        <div class="g-signin2 center-block" data-onsuccess="onSignIn" id="welcome"></div>
+    <div class="jumbotron"><div class="logout"></div><div class="admin"></div>
+        <p class="text-center" id="welcome" class="welcome2">Afin de voter, connecte-toi à ton <b>adresse ESCP</b>.</p>
+        <div class="text-center" id="welcome"><a href="/auth/google" class="btn btn-danger"><span class="fa fa-google""></span> <strong>Google</strong></a></div>
         <br><p class="text-center" id="login"></p>
-        
-        <form class="text-center hide" id="form" action="/vote" method="post"> 
-            Vous souhaitez voter pour :<br><br>
+        <div class="spinner hide">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+        <form class="text-center hide" id="form" method="post"> 
+        <select class="custom-select" name="campus">
+          <option selected>Choisissez votre campus</option>
+          <option value="Berlin">Berlin</option>
+          <option value="Londres">Londres</option>
+          <option value="Madrid">Madrid</option>
+          <option value="Turin">Turin</option>
+        </select><br><br>
             <label for="radio-one" class="radio-inline">
                 <input type="radio" name="exampleRadios" id="radio-one" value="value1"/>
                 <i id="radio-one"></i> <span id="name1"></span>
@@ -33,7 +43,7 @@
                 <input type="radio" name="exampleRadios" id="radio-two" value="value2"/>
                 <i id="radio-two"></i> <span id="name2"></span>
             </label><br><br>
-            <button type="submit" class="myButton">Voter</button>
+            <button type="button" class="myButton" id="submit" onclick="submite();">Voter</button>
         </form>
     </div>
 </div>

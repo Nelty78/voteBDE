@@ -20,6 +20,21 @@ body {
   }
 }
 
+.admin {
+  color: white;
+  position: absolute;
+  white-space: nowrap;
+  top: 5px;
+  left: 10px;
+}
+
+.admin a:visited {
+  color: white;
+}
+.admin a {
+  color: white;
+}
+
 .logout {
   color: white;
   position: absolute;
@@ -32,6 +47,13 @@ body {
   color: white;
 }
 .logout a {
+  color: white;
+}
+
+#welcome a:visited {
+  color: white;
+}
+#welcome a {
   color: white;
 }
 
@@ -79,15 +101,16 @@ box-shadow: 9px 9px 7px -8px rgba(0,0,0,0.27);
   margin: 10px;
 }
 
-.jumbotron p {
-  font-size: 1.5em;
-}
-
-.jumbotron .alert {
-  font-size: 1em;
-}
 
 
+@media only screen and (max-width: 1000px) {
+    .jumbotron, .jumbotron p, .jumbotron .alert {
+      font-size: 30px;
+    }
+    select {
+      font-size: 27px;
+    }
+  }
 
 .img-left {
   float: left;
@@ -97,13 +120,6 @@ box-shadow: 9px 9px 7px -8px rgba(0,0,0,0.27);
   float: right;
 }
 
-.g-signin2{
-  width: 100%;
-}
-
-.g-signin2 > div{
-  margin: 0 auto;
-}
 
 /*
 -----
@@ -245,4 +261,54 @@ input[type="checkbox"]:checked + i:before { color: rgba(0, 128, 0, 0.5); }
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+
+/*
+
+---------------------
+---------------------
+---------------------
+
+*/
+
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
 }
