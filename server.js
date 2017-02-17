@@ -12,6 +12,8 @@ var express = require('express'),
     User = require('./app/controllers/userHandler.server.js'),
     cookieParser = require('cookie-parser');
 
+var port = process.env.PORT || 8080;
+
 var app = express();
 
 var srcPath = __dirname;
@@ -78,8 +80,8 @@ mongo.connect('mongodb://admin:admin@ds145289.mlab.com:45289/bde', function (err
 
     routes(app, db, passport);
 
-    app.listen(80, function () {
-        console.log('Listening on port 80...');
+    app.listen(port, function () {
+        console.log('Listening on port '+port+'...');
     });
 
 });
