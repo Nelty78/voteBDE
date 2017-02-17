@@ -78,8 +78,8 @@ mongo.connect('mongodb://admin:admin@ds145289.mlab.com:45289/bde', function (err
 
     routes(app, db, passport);
 
-    app.listen(8080, function () {
-        console.log('Listening on port 8080...');
+    app.listen(80, function () {
+        console.log('Listening on port 80...');
     });
 
 });
