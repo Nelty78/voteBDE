@@ -63,6 +63,39 @@ $( document ).ready(function() {
 
 });
 
+$.getJSON('//api.ipify.org?format=jsonp&callback=?', function(data) {
+  var ip = data.ip;
+  $.getJSON('https://ipapi.co/'+ip+'/json/', function(data){
+    var country = data.country;
+    var selected = '';
+    
+    if(country == 'FR') {
+      $(" #country ").html('Vous êtes en France : le vote en ligne est seulement disponible pour les étudiants sur les campus étrangers. Toute tentative de vote en ligne ou de double vote sera sanctionnée par un vote blanc.');
+      $(" #country ").removeClass('hide');
+      $(" #country ").addClass('alert alert-danger'); 
+    }
+    
+    switch(country) {
+      case 'ES':
+        selected = 'Madrid';
+        break;
+      case 'GB':
+        selected = 'Londres';
+        break;
+      case 'DE':
+        selected = 'Berlin';
+        break;
+      case 'IT':
+        selected = 'Turin';
+        break;
+      default:
+        selected = '';
+        break;
+    }
+    $('.custom-select option[value='+selected+']').prop('selected', true);
+  });
+});
+
 
 function submite() {
   var radioValue = $('input[name=exampleRadios]:checked').val();
