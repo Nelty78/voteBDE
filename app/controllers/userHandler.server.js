@@ -30,8 +30,8 @@ var userHandler = function (req, res) {
         else return res.redirect('/');
     }
     this.isAdmin = function(req, res) {
-        var result = false
-        if(req.user) { if(admin.indexOf(req.user.email) > -1 result = true } ;
+        var result = false;
+        if(req.user) { if(admin.indexOf(req.user.email) > -1) result = true } ;
         res.send(result);
     }
 }
