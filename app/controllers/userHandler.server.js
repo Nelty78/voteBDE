@@ -31,7 +31,7 @@ var userHandler = function (req, res) {
     }
     this.isAdmin = function(req, res) {
         var result = false
-        if(admin.indexOf(req.user.email) > -1) result = true;
+        if(req.user) { if(admin.indexOf(req.user.email) > -1 result = true } ;
         res.send(result);
     }
 }
