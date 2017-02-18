@@ -21,7 +21,7 @@ var userHandler = function (req, res) {
     }
     this.isconnected = function(req, res, next) {
         var result = { connected: false, message: "" };
-        if(req.user.email) { if(req.user.email.split("@")[1] == "edu.escpeurope.eu") { result.connected = true; } else { result.message = "Il faut te connecter avec ton adresse ESCP !"; }}
+        if(req.user) { if(req.user.email.split("@")[1] == "edu.escpeurope.eu") { result.connected = true; } else { result.message = "Il faut te connecter avec ton adresse ESCP !"; }}
         else { result.message = ""; }
         res.send(result);
     }

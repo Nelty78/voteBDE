@@ -106,18 +106,18 @@ passport.use(new GoogleStrategy({
     }));
     
     passport.serializeUser(function(user, done) {
-        console.log('Serializing user:'+user.id);
+        //console.log('Serializing user:'+user.id);
         done(null, user);
     });
     
     
     passport.deserializeUser(function (user, done) {
         
-        console.log('Deserializing user:');
-        console.log(user);
+        //console.log('Deserializing user:');
+        //console.log(user);
         return UserDB.findOne({ id: user.id }, function (error, user) {
-            console.log('Found :');
-            console.log(user);
+            //console.log('Found :');
+            //console.log(user);
             return done(error, user);
         });
     });
