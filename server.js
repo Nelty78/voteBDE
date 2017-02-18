@@ -41,7 +41,7 @@ app.use(session({
         maxAge: 7 * 24 * 60 * 60 * 1000}
     }));
 app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.session());
 
 
 
