@@ -112,6 +112,11 @@ box-shadow: 9px 9px 7px -8px rgba(0,0,0,0.27);
     }
   }
 
+select {
+  width: 200px !important;
+  margin: auto;
+}
+
 .img-left {
   float: left;
 }

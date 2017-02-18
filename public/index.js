@@ -1,3 +1,5 @@
+/* global $ */
+
 var rand = Math.random();
 var src_ted = "public/img/logoted.jpg";
 var src_stacks = "public/img/logostacks.png";
@@ -63,13 +65,26 @@ $( document ).ready(function() {
 
 
 function submite() {
-  $(" #form ").addClass('hide');
-  $(" #welcome ").addClass('hide');
-  $(" #login ").html('');
-  $(" .spinner ").removeClass('hide');
-  $.post( "/vote", { exampleRadios: $('input[name=exampleRadios]:checked').val(), campus: $('select option:selected').text() }, function (data) {
-    $(" .spinner ").addClass('hide');
-    $(" #login ").removeClass('hide').html(data);
-  });
+  var radioValue = $('input[name=exampleRadios]:checked').val();
+  var possibleRadios = ['ted', 'stacks'];
+  var selectValue = $('select option:selected').text();
+  var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin'];
+  
+  if(possibleRadios.indexOf(radioValue) > -1 && possibleSelects.indexOf(selectValue) > -1) {
+    $(" #login ").text('');
+    $(" #login ").removeClass('alert alert-danger'); 
+    $(" #form ").addClass('hide');
+    $(" #welcome ").addClass('hide');
+    $(" #login ").html('');
+    $(" .spinner ").removeClass('hide');
+    $.post( "/vote", { exampleRadios: radioValue, campus: selectValue }, function (data) {
+      $(" .spinner ").addClass('hide');
+      $(" #login ").removeClass('hide').html(data);
+    });
+  }
+  else {
+    $(" #login ").text('Veuillez compléter le formulaire.');
+    $(" #login ").addClass('alert alert-danger'); 
+  }
 }
 

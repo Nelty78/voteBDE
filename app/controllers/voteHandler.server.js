@@ -35,7 +35,7 @@ function voteHandler (db, passport) {
 
       var voteProjection = { 'email': 1, 'value': 1, 'time': 1 };
     
-      clicks.findOne({'email': req.user }, voteProjection, function (err, result) {
+      clicks.findOne({'email': req.user.email }, voteProjection, function (err, result) {
          if (err) {
             throw err;
          }
@@ -44,6 +44,7 @@ function voteHandler (db, passport) {
              var vote = result.value;
              if(vote == 'ted') vote = "Ted'Quila";
              else vote = "Stacks & Furious";
+             console.log(req.session);
             res.send('Tu as déjà voté ! Pour : '+vote);
          } else {
             var date = new Date();
@@ -53,23 +54,35 @@ function voteHandler (db, passport) {
             var hour = (hours < 10 ? '0' : '') + hours; // adjust +1 according to server time 
             var minute = (minutes < 10 ? '0' : '') + minutes;
             
-            var time = hour+'h'+minute;
-            clicks.insert({ 'email': req.user, 'value': req.body.exampleRadios, 'time': time , 'campus': req.body.campus}, function (err) {
-               if (err) {
-                  throw err;
-               }
-    
-               clicks.findOne({'email': req.user}, voteProjection, function (err, doc) {
-                  if (err) {
-                     throw err;
-                  }
-                 
-                  var vote = doc.value;
-                  if(vote == 'ted') vote = "Ted'Quila";
-                  else vote = "Stacks & Furious";
-                  res.send("Merci d'avoir voté pour : "+vote);
-               });
-            });
+            // Let's check the POST data
+            var radioValue = req.body.exampleRadios;
+            var possibleRadios = ['ted', 'stacks'];
+            var selectValue = req.body.campus;
+            var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin'];
+            
+            if(possibleRadios.indexOf(radioValue) === -1 || possibleSelects.indexOf(selectValue) === -1) {
+             res.send('Petit malin.');   
+            }
+            else {
+            
+                var time = hour+'h'+minute;
+                clicks.insert({ 'email': req.user.email, 'value': radioValue, 'time': time , 'campus': selectValue}, function (err) {
+                   if (err) {
+                      throw err;
+                   }
+        
+                   clicks.findOne({'email': req.user.email}, voteProjection, function (err, doc) {
+                      if (err) {
+                         throw err;
+                      }
+                     
+                      var vote = doc.value;
+                      if(vote == 'ted') vote = "Ted'Quila";
+                      else vote = "Stacks & Furious";
+                      res.send("Merci d'avoir voté pour : "+vote);
+                   });
+                });
+            }
          }
       });
     };

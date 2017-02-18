@@ -67,6 +67,10 @@ body {
   padding: 7px;
 }
 
+.btn {
+  width: 80px;
+}
+
 @mixin responstable(
   $breakpoint: $table-breakpoint,
   $background-color: $table-background-color,

@@ -13,7 +13,7 @@ var userHandler = function (req, res) {
         return profile;
     }
     this.connected = function (req, res, next) {
-        if (req.user && req.user.split("@")[1] == "edu.escpeurope.eu") {
+        if (req.user.email && req.user.email.split("@")[1] == "edu.escpeurope.eu") {
             next();
         } else {
             res.redirect('/');
@@ -21,17 +21,17 @@ var userHandler = function (req, res) {
     }
     this.isconnected = function(req, res, next) {
         var result = { connected: false, message: "" };
-        if(req.user) { if(req.user.split("@")[1] == "edu.escpeurope.eu") { result.connected = true; } else { result.message = "Il faut te connecter avec ton adresse ESCP !"; }}
+        if(req.user.email) { if(req.user.email.split("@")[1] == "edu.escpeurope.eu") { result.connected = true; } else { result.message = "Il faut te connecter avec ton adresse ESCP !"; }}
         else { result.message = ""; }
         res.send(result);
     }
     this.admin = function(req, res, next) {
-        if(admin.indexOf(req.user) > -1) next();
+        if(admin.indexOf(req.user.email) > -1) next();
         else return res.redirect('/');
     }
     this.isAdmin = function(req, res) {
         var result = false
-        if(admin.indexOf(req.user) > -1) result = true;
+        if(admin.indexOf(req.user.email) > -1) result = true;
         res.send(result);
     }
 }

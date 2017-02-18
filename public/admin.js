@@ -1,3 +1,5 @@
+/* global $ */
+
 $( document ).ready(function() {
  
  $.get('admin/getVotes', function(data) { 
