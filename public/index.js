@@ -7,6 +7,17 @@ var names = ["Stacks & Furious", "Ted'Quila"];
 
 $( document ).ready(function() {
 
+    function isFacebookApp() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+    }
+    
+    if(isFacebookApp()) {
+      $(" #fb ").text('Veuillez ouvrir ce site dans Safari, et non le navigateur de Facebook (Google bloque les connexions depuis Facebook).');
+      $(" #fb ").removeClass('hide');
+      $(" #fb ").addClass('alert alert-danger'); 
+    }
+
     $.get('api/isAdmin', function (result) {
       if(result === true) $(" .admin ").html('<a href="/admin""><i class="fa fa-lock fa-lg" aria-hidden="true"></i> Administration</a>');
     });
