@@ -148,10 +148,10 @@ body {
   
     th, td {
       text-align: left;
-      margin: .5em 1em;  
+      margin: .1em 1em;  
       @media (min-width: $breakpoint) {
         display: table-cell; // show the table as a normal table for tablet and desktop
-        padding: 1em;
+        padding: 0.3em;
       }
     }  
   }    

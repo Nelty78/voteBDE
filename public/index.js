@@ -13,7 +13,7 @@ $( document ).ready(function() {
     }
     
     if(isFacebookApp()) {
-      $(" #fb ").text('Veuillez ouvrir ce site dans Safari, et non le navigateur de Facebook (Google bloque les connexions depuis Facebook).');
+      $(" #fb ").text('Veuillez ouvrir ce site dans votre navigateur internet, et non le navigateur de Facebook (Google bloque les connexions depuis Facebook).');
       $(" #fb ").removeClass('hide');
       $(" #fb ").addClass('alert alert-danger'); 
     }

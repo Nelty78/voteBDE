@@ -26,7 +26,7 @@ var userHandler = function (req, res) {
         res.send(result);
     }
     this.admin = function(req, res, next) {
-        if(admin.indexOf(req.user.email) > -1) next();
+        if(req.user) { if(admin.indexOf(req.user.email) > -1) next(); else return res.redirect('/'); }
         else return res.redirect('/');
     }
     this.isAdmin = function(req, res) {
