@@ -35,6 +35,10 @@ body {
   color: white;
 }
 
+.timeLeft {
+  color: #ffb3b3;
+}
+
 .logout {
   color: white;
   position: absolute;
@@ -134,7 +138,7 @@ select {
 -----
 -----
 */
-
+/*
 form {
   font-size: 1.3em;
 }
@@ -242,8 +246,11 @@ input[type="checkbox"]:checked + i:before { content: "\f046"; }
 
 input[type="checkbox"]:checked + i + span,
 input[type="checkbox"]:checked + i:before { color: rgba(0, 128, 0, 0.5); }
+*/
 
-
+label {
+  font-size: 20px;
+}
 
 .myButton {
 	background-color:#3370ff;
