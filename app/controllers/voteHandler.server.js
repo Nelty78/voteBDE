@@ -3,17 +3,27 @@
 function voteHandler (db, passport) {
 
     var clicks = db.collection('votes');
+    var startEnd = db.collection('startEnd');
+    
+    this.getStartEnd = function (req, res) {
+        startEnd.findOne(function (err, doc) {
+            if(err) throw err;
+            res.send(doc);
+        });
+    }
     
     this.getVotes = function (req, res) {
        clicks.find({ 'value': 'stacks' }, { 'email': 1 }).count().then(function (nbstacks) {
           
           clicks.find({ 'value': 'ted' }).count().then(function (nbted) { 
-             
-             var json = { stacks: nbstacks, 
-                    ted: nbted };
+             clicks.find({ 'value': 'ted' }).count().then(function (nbblanc) { 
+                 
+                var json = { stacks: nbstacks, 
+                        ted: nbted,
+                        blanc: nbblanc};
             
-             res.send(json);
-             
+                res.send(json);
+             });
           }); 
           
        }); 

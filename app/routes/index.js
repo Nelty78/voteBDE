@@ -22,18 +22,19 @@ module.exports = function (app, db, passport, user) {
         .get(user.admin, function (req, res) {
             res.sendFile(process.cwd() + '/public/admin.html');
         });        
-        
+     
     app.route('/admin/getVotes')
         .get(user.admin, voteHandler.getVotes);
         
     app.route('/admin/getListVotes')
         .get(user.admin, voteHandler.getListVotes);
 
-
-
     app.route('/vote')
         .post(user.connected, voteHandler.newVote); // Only grant access if he is connected
     
+    app.route('/api/getStartEnd')
+        .get(voteHandler.getStartEnd);
+
     app.route('/api/connected')
         .get(user.isconnected);
         
