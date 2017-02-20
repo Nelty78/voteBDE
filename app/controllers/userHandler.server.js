@@ -2,8 +2,7 @@
 
 var userHandler = function (req, res) {
     
-    var admin = ["leo.roux@edu.escpeurope.eu", "clement.allouard@edu.escpeurope.eu",
-                "solene.pratmarty@edu.escpeurope.eu", "francois.chapoulart@edu.escpeurope.eu", "vincent.didry@edu.escpeurope.eu"];
+    var admin = [""];
     
     this.extractProfile = function (profile) {
         var profile = { email: profile.emails[0].value,
@@ -26,12 +25,16 @@ var userHandler = function (req, res) {
         res.send(result);
     }
     this.admin = function(req, res, next) {
-        if(req.user) { if(admin.indexOf(req.user.email) > -1) next(); else return res.redirect('/'); }
+        /* ***************** */
+        /* ******************** */
+        /* TO CHANGE ******** */
+        /* ** */
+        if(req.user) { if(admin.indexOf(req.user.email) == -1) next(); else return res.redirect('/'); }
         else return res.redirect('/');
     }
     this.isAdmin = function(req, res) {
         var result = false;
-        if(req.user) { if(admin.indexOf(req.user.email) > -1) result = true } ;
+        if(req.user) { if(admin.indexOf(req.user.email) == -1) result = true } ;
         res.send(result);
     }
 }
