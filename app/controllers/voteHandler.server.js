@@ -16,7 +16,7 @@ function voteHandler (db, passport) {
        clicks.find({ 'value': 'stacks' }, { 'email': 1 }).count().then(function (nbstacks) {
           
           clicks.find({ 'value': 'ted' }).count().then(function (nbted) { 
-             clicks.find({ 'value': 'ted' }).count().then(function (nbblanc) { 
+             clicks.find({ 'value': 'blanc' }).count().then(function (nbblanc) { 
                  
                 var json = { stacks: nbstacks, 
                         ted: nbted,
