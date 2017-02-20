@@ -66,7 +66,7 @@ function voteHandler (db, passport) {
                               vote = "[ Vote invalide ]";
                               break;
                       }
-            res.send('Tu as déjà voté ! Pour : '+vote);
+            res.send('Tu as déjà voté '+vote+' !');
          } else {
             var date = new Date();
             /*var hours = date.getHours()+1;
