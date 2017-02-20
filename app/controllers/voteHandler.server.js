@@ -48,25 +48,25 @@ function voteHandler (db, passport) {
             res.send('Tu as déjà voté ! Pour : '+vote);
          } else {
             var date = new Date();
-            var hours = date.getHours()+1;
+            /*var hours = date.getHours()+1;
             var minutes = date.getMinutes();
             
             var hour = (hours < 10 ? '0' : '') + hours; // adjust +1 according to server time 
-            var minute = (minutes < 10 ? '0' : '') + minutes;
+            var minute = (minutes < 10 ? '0' : '') + minutes;*/
             
             // Let's check the POST data
             var radioValue = req.body.exampleRadios;
-            var possibleRadios = ['ted', 'stacks'];
+            var possibleRadios = ['ted', 'stacks', 'blanc'];
             var selectValue = req.body.campus;
-            var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin'];
+            var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin', 'Césure'];
             
             if(possibleRadios.indexOf(radioValue) === -1 || possibleSelects.indexOf(selectValue) === -1) {
              res.send('Petit malin.');   
             }
             else {
             
-                var time = hour+'h'+minute;
-                clicks.insert({ 'email': req.user.email, 'value': radioValue, 'time': time , 'campus': selectValue}, function (err) {
+                //var time = hour+'h'+minute;
+                clicks.insert({ 'email': req.user.email, 'value': radioValue, 'time': date , 'campus': selectValue}, function (err) {
                    if (err) {
                       throw err;
                    }
@@ -77,9 +77,22 @@ function voteHandler (db, passport) {
                       }
                      
                       var vote = doc.value;
-                      if(vote == 'ted') vote = "Ted'Quila";
-                      else vote = "Stacks & Furious";
-                      res.send("Merci d'avoir voté pour : "+vote);
+                      switch(vote) {
+                          case 'ted':
+                              vote = "pour Ted'Quila";
+                              break;
+                          case 'stacks':
+                              vote = "pour Stacks & Furious";
+                              break;
+                          case 'blanc':
+                              vote = "blanc";
+                              break;
+                          default:
+                              vote = "[ Vote invalide ]";
+                              break;
+                      }
+
+                      res.send("Merci d'avoir voté "+vote+".");
                    });
                 });
             }

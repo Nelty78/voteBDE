@@ -20,6 +20,10 @@ body {
   }
 }
 
+.btn {
+  min-width: 100px;
+}
+
 .admin {
   color: white;
   position: absolute;

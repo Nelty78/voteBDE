@@ -110,9 +110,9 @@ $.getJSON('//api.ipify.org?format=jsonp&callback=?', function(data) {
 
 function submite() {
   var radioValue = $('input[name=exampleRadios]:checked').val();
-  var possibleRadios = ['ted', 'stacks'];
+  var possibleRadios = ['ted', 'stacks', 'blanc'];
   var selectValue = $('select option:selected').text();
-  var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin'];
+  var possibleSelects = ['Madrid', 'Berlin', 'Londres', 'Turin', 'Césure'];
   
   if(possibleRadios.indexOf(radioValue) > -1 && possibleSelects.indexOf(selectValue) > -1) {
     $(" #login ").text('');

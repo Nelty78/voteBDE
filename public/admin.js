@@ -25,7 +25,8 @@ $.get('admin/getListVotes', function(data) {
     for(var i = 0; i < data.length; i++) {
         var vote = data[i].value;
         if(vote == "ted") vote = "Ted'Quila";
-        else vote = "Stacks & Furious";
+        if(vote == "stacks") vote = "Stacks & Furious";
+        if(vote == "blanc") vote = "Blanc";
         
         var campus = data[i].campus;
         var campusClass = '';
@@ -42,8 +43,20 @@ $.get('admin/getListVotes', function(data) {
             case 'Turin':
                 campusClass = 'btn-warning';
                 break;
+            case 'Césure':
+                campusClass = 'btn-default';
+                break;
         }
-        var time = data[i].time;
+        var time = new Date(data[i].time);
+        
+        var hours = time.getHours()+1;
+        var minutes = time.getMinutes();
+            
+        var hour = (hours < 10 ? '0' : '') + hours; // adjust +1 according to server time 
+        var minute = (minutes < 10 ? '0' : '') + minutes;
+        
+        time = hour+'h'+minute;
+        
         html += '<tr><td><button class="btn '+campusClass+'">'+campus+'</button></td><td>'+data[i].email+'</td><td>'+vote+'</td><td>'+time+'</td></tr>';
     }
     
