@@ -52,9 +52,20 @@ function voteHandler (db, passport) {
     
          if (result) {
              var vote = result.value;
-             if(vote == 'ted') vote = "Ted'Quila";
-             else vote = "Stacks & Furious";
-             console.log(req.session);
+             switch(vote) {
+                          case 'ted':
+                              vote = "pour Ted'Quila";
+                              break;
+                          case 'stacks':
+                              vote = "pour Stacks & Furious";
+                              break;
+                          case 'blanc':
+                              vote = "blanc";
+                              break;
+                          default:
+                              vote = "[ Vote invalide ]";
+                              break;
+                      }
             res.send('Tu as déjà voté ! Pour : '+vote);
          } else {
             var date = new Date();
