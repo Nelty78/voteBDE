@@ -83,7 +83,7 @@ $.getJSON('//api.ipify.org?format=jsonp&callback=?', function(data) {
     var selected = '';
     
     if(country == 'FR') {
-      $(" #country ").html('Vous êtes en France : le vote en ligne est seulement disponible pour les étudiants sur les campus étrangers. Toute tentative de vote en ligne ou de double vote sera sanctionnée par un vote blanc.');
+      $(" #country ").html('Êtes-vous en France ? Ce site est destiné aux étudiants sur les campus étrangers et les césures.');
       $(" #country ").removeClass('hide');
       $(" #country ").addClass('alert alert-danger'); 
     }

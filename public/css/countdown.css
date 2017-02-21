@@ -1,11 +1,6 @@
-body{ 
-	
-	background: #fff;
-  padding-top: 100px
-}
-
 #countdown {
 	font: normal 13px/20px Arial, Helvetica, sans-serif; word-wrap:break-word;
+	background: #fff;
 }
 
 .countdown-label {
@@ -37,14 +32,12 @@ background: #f1f1f1;
 	position: relative;
 	z-index: 1;
 text-shadow: 1px 1px 0px #ccc;
-	display: inline-block;
   font-family: Arial, sans-serif;
 	text-align: center;
   
   padding: 20px;
   border-radius: 5px 5px 0 0;
-  font-size: 30px;
-  font-weight: thin;
+  font-size: 22px;
   display: block;
     
 }
