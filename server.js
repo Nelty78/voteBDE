@@ -67,7 +67,7 @@ mongo.connect(process.env.MONGODB_URI, function (err, db) {
         store: store,
         saveUninitialized: true,
         cookie: {
-            maxAge: 7 * 24 * 60 * 60 * 1000}
+            maxAge: 1 * 24 * 60 * 60 * 1000}
         }));
     app.use(passport.initialize());
     app.use(passport.session());

@@ -9,9 +9,10 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script> -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script type="text/javascript" src="public/index.js"></script> 
+        <script type="text/javascript" src="public/js/index.js"></script> 
+        <script type="text/javascript" src="public/js/countdown.js"></script>
         <link href="public/css/style.css" rel="stylesheet">
-        <link href="public/css/admin/style.css" rel="stylesheet">
+        <link href="public/css/countdown.css" rel="stylesheet">
 
     </head>
 <body>
@@ -19,7 +20,12 @@
 <div class="container-fluid">
     <img class="img-responsive img-rounded logo img-left">
     <img class="img-responsive img-rounded logo img-right">
-    <div class="jumbotron"><div class="logout"></div><div class="admin"></div><div class="timeLeft text-center">Temps restant : <span id="restant"></span></div>
+    <div class="jumbotron"><div class="logout"></div><div class="admin"></div><div class="countdownwrap text-center"></div><input type="hidden" id="set-time" value="1"/>
+<div id="countdown">
+  
+  <div id='tiles' class="color-full"></div>
+  <div class="countdown-label">Temps Restant</div>
+</div><br>
         <p class="text-center" id="welcome" class="welcome2">Afin de voter, connecte-toi à ton <b>adresse ESCP</b>.</p>
         <div class="text-center" id="welcome"><a href="/auth/google" class="btn btn-danger"><span class="fa fa-google""></span> <strong>Google</strong></a></div>
         <br><p class="text-center" id="login"></p><p class="text-center" id="fb"></p><p class="text-center" id="country"></p>

@@ -74,75 +74,7 @@ $( document ).ready(function() {
 
 });
 
-function checkTimeLeft() {
-  $.get('api/getStartEnd', function(data) {
-      
-      var start = new Date(data.start);
-      var end = new Date(data.end);
-  
-      var startHours = start.getHours();
-      var startMinutes = start.getMinutes();
-      var endHours = end.getHours();
-      var endMinutes = end.getMinutes();
-              
-      var startHour = (startHours < 10 ? '0' : '') + startHours; // adjust +1 according to server time 
-      var endHour = (endHours < 10 ? '0' : '') + endHours; // adjust +1 according to server time 
-      
-      var startMinute = (startMinutes < 10 ? '0' : '') + startMinutes;
-      var endMinute = (endMinutes < 10 ? '0' : '') + endMinutes;
-          
-      var startTime = startHour+'h'+startMinute;
-      var endTime = endHour+'h'+endMinute;
-      
-      var debut = ('0' + start.getDate()).slice(-2) + '/'
-               + ('0' + (start.getMonth()+1)).slice(-2)+' '+startTime;
-      var cloture = ('0' + end.getDate()).slice(-2) + '/'
-               + ('0' + (end.getMonth()+1)).slice(-2)+' '+endTime;
-      
-      var now = new Date();
-      var nowHours = now.getHours();
-      var nowMinutes = now.getMinutes();
-      var nowHour = (nowHours < 10 ? '0' : '') + nowHours; // adjust +1 according to server time
-      var nowMinute = (nowMinutes < 10 ? '0' : '') + nowMinutes;
-      var nowTime = nowHour+'h'+nowMinute;
-      
-      var nowDate = ('0' + now.getDate()).slice(-2) + '/'
-               + ('0' + (now.getMonth()+1)).slice(-2) + ' ' + nowTime;
-      var restant = (end-now)/1000;
-      
-  
-      // calculate (and subtract) whole days
-      var daysRestant = ('0' + Math.floor(restant / 86400).toString()).slice(-2);
-      restant -= daysRestant * 86400;
-  
-      // calculate (and subtract) whole hours
-      var hoursRestant = ('0' + (Math.floor(restant / 3600) % 24).toString()).slice(-2);
-      restant -= hoursRestant * 3600;
-      
-      // calculate (and subtract) whole minutes
-      var minutesRestant = ('0' + (Math.floor(restant / 60) % 60).toString()).slice(-2);
-      restant -= minutesRestant * 60;
-      
-      var secondsRestant = restant.toFixed(0);
-      
-      daysRestant = daysRestant+'j';
-      hoursRestant = hoursRestant+'h';
-      minutesRestant = minutesRestant+'mn';
-      secondsRestant = secondsRestant+'s'
-      
-      if(daysRestant == "00j") daysRestant = "";
-      if(hoursRestant == "00h") hoursRestant = "";
-  
-      restant = daysRestant + hoursRestant + minutesRestant + secondsRestant;
-      
-      
-      //$(" #debut ").text(debut);
-      //$(" #cloture ").text(cloture);
-      //$(" #now ").text(nowDate);
-      $(" #restant ").text(restant);
-      });
-}
-setInterval(checkTimeLeft, 1000);
+
 
 $.getJSON('//api.ipify.org?format=jsonp&callback=?', function(data) {
   var ip = data.ip;
