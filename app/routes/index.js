@@ -2,21 +2,16 @@
 
 var VoteHandler = require(process.cwd() + '/app/controllers/voteHandler.server.js');
 var UserHandler = require(process.cwd() + '/app/controllers/userHandler.server.js');
-var ExcelHandler = require(process.cwd() + '/app/controllers/excelHandler.server.js');
 
 module.exports = function (app, db, passport, user) {
 
     var user = new UserHandler();
     var voteHandler = new VoteHandler(db, passport);
-    var excelHandler = new ExcelHandler(db, passport);
 
     app.route('/')
         .get(function (req, res) {
             res.sendFile(process.cwd() + '/public/index.html');
         });
-
-    app.route('/admin/export')
-        .get(user.admin, excelHandler.export);
 
     app.route('/admin')
         .get(user.admin, function (req, res) {
