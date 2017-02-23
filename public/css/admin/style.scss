@@ -11,7 +11,7 @@ If you like this solution, you might also want to check out the 1.0 version:
 */
 
 // Default options for table style
-$background-color: #2c3e50;
+$background-color: #66b3ff;
 $table-breakpoint: 700px;
 $table-background-color: #FFF;
 $table-text-color: #024457;
@@ -21,7 +21,7 @@ $table-cell-border: 1px solid #D9E4E6;
 // Extra options for table style (parse these arguments when including your mixin)
 $table-border-radius: 10px;
 $table-highlight-color: #EAF3F3;
-$table-header-background-color: #167F92;
+$table-header-background-color: #0073e6;
 $table-header-text-color: #FFF;
 $table-header-border: 1px solid #FFF;
 
@@ -44,7 +44,7 @@ body {
 }
 
 .header {
-  color: $table-header-text-color;
+  color: black;
 }
 
 .left {

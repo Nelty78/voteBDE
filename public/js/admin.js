@@ -88,7 +88,7 @@ $.get('api/getStartEnd', function(data) {
 $.get('admin/getListVotes', function(data) { 
 
     
-    var html = '<table class="responstable"><tr><th>Campus</th><th data-th="Votant"><span>Adresse e-mail</span></th><th>Vote</th><th>Date</th><th>Heure</th></tr>';
+    var html = '<table class="responstable display" id="dataTable"><thead><tr><th>Campus</th><th data-th="Votant"><span>Adresse e-mail</span></th><th>Vote</th><th>Date</th><th>Heure</th></tr></thead><tfoot><tr><th>Campus</th><th data-th="Votant"><span>Adresse e-mail</span></th><th>Vote</th><th>Date</th><th>Heure</th></tr></tfoot><tbody>';
     
     for(var i = 0; i < data.length; i++) {
         var vote = data[i].value;
@@ -129,10 +129,16 @@ $.get('admin/getListVotes', function(data) {
         html += '<tr><td><button class="btn '+campusClass+'">'+campus+'</button></td><td>'+data[i].email+'</td><td>'+vote+'</td><td>'+dateTab+'</td><td>'+time+'</td></tr>';
     }
     
-    html += '</table>';
+    html += '</tbody></table>';
     
     $(" #table ").html(html);
     
+    $('#dataTable').DataTable({
+    dom: 'Blftipr',
+    buttons: [
+        'excel', 'csv', 'pdf'
+    ]
+});
     
 });
 
