@@ -7,10 +7,13 @@
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script type="text/javascript" src="public/js/admin.js"></script> 
+        <script type="text/javascript" src="public/js/admin.js"></script>
+        <script type="text/javascript" src="public/js/excellentexport.js"></script>
     </head>
     <body>
-<h1 class="text-center header">Administration - Résultat des votes</h1>
+<h1 class="text-center header">Administration - Résultat des votes - <i class="fa fa-file-excel-o fa-lg" aria-hidden="true"></i> <a download="resultatsCampagneBDE.xls" href="#" onclick="return ExcellentExport.excel(this, 'table', 'BDE');">Exporter</a></h1>
+
+
 
 <div class="cont left">
   <h3 class="title text-center">Statistiques</h2>
