@@ -19,7 +19,7 @@ $.get('api/getStartEnd', function(data) {
       
       var start = new Date(data.start);
       var end = new Date(data.end);
-      var now = new Date();
+      var now = new Date(data.now);
       
       if((start-now) > 0) { // The vote hasn't started yet! 
           disableForm("Revenez plus tard.");

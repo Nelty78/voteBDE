@@ -8,6 +8,7 @@ function voteHandler (db, passport) {
     this.getStartEnd = function (req, res) {
         startEnd.findOne(function (err, doc) {
             if(err) throw err;
+            doc.now = new Date();
             res.send(doc);
         });
     }
@@ -69,11 +70,6 @@ function voteHandler (db, passport) {
             res.send('Tu as déjà voté '+vote+' !');
          } else {
             var date = new Date();
-            /*var hours = date.getHours()+1;
-            var minutes = date.getMinutes();
-            
-            var hour = (hours < 10 ? '0' : '') + hours; // adjust +1 according to server time 
-            var minute = (minutes < 10 ? '0' : '') + minutes;*/
             
             // Let's check the POST data
             var radioValue = req.body.exampleRadios;
@@ -85,8 +81,6 @@ function voteHandler (db, passport) {
              res.send('Petit malin.');   
             }
             else {
-            
-                //var time = hour+'h'+minute;
                 clicks.insert({ 'email': req.user.email, 'value': radioValue, 'time': date , 'campus': selectValue}, function (err) {
                    if (err) {
                       throw err;
