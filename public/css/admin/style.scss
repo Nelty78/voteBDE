@@ -151,7 +151,8 @@ body {
       margin: .1em 1em;  
       @media (min-width: $breakpoint) {
         display: table-cell; // show the table as a normal table for tablet and desktop
-        padding: 0.3em;
+        padding: 0.0em;
+        padding-left: 0.2em;
       }
     }  
   }    
