@@ -2,29 +2,56 @@
 
 $( document ).ready(function() {
 
-function disableForm(message) {
+var formDisabled = false;
+var beforeVote = false; // If the vote hasn't started we'll set this to true;
+
+function disableForm(beforeVote, message) {
+    formDisabled = true;  // let's use this var to only disable the form once...
+    
     $( '#tiles' ).removeClass('color-full');
     $( '#tiles' ).removeClass('color-half');
     $( '#tiles' ).addClass('color-empty');
-    var countdown = document.getElementById("tiles"); // get tag element
-    countdown.innerHTML = "<span>"+message+"</span>"; 
+    if(beforeVote) $(" .countdown-label ").text('Revenez plus tard');
+    else $("#tiles").text(message);
     $(" #form ").addClass('hide');
     $(" #login ").addClass('hide');
     $(" #welcome ").addClass('hide');
     $(" #submit ").attr('disabled','disabled');
 }
 
+function enableForm() {
+    formDisabled = false;
+    
+    $( '#tiles' ).addClass('color-full');
+    $( '#tiles' ).removeClass('color-empty');
+    $(" .countdown-label ").text('Temps restant');
+    $(" #login ").removeClass('hide');
+    $(" #welcome ").removeClass('hide');
+    $(" #submit ").removeAttr("disabled");
+}
+
 function checkTimeLeft() {
+
 $.get('api/getStartEnd', function(data) {
+
       
       var start = new Date(data.start);
       var end = new Date(data.end);
       var now = new Date(data.now);
       
+      
       if((start-now) > 0) { // The vote hasn't started yet! 
-          disableForm("Revenez plus tard.");
+          end = start;
+          beforeVote = true;
+          if(!formDisabled) disableForm(beforeVote);
       }
       else {
+          if(beforeVote == true) { 
+              beforeVote = false;
+              enableForm();
+          }
+      }
+      
           var startHours = start.getHours();
           var startMinutes = start.getMinutes();
           var endHours = end.getHours();
@@ -57,7 +84,7 @@ $.get('api/getStartEnd', function(data) {
           var seconds_left = restant; 
           
           if(seconds_left < 0) { 
-              disableForm('Temps écoulé.');
+              disableForm(false, 'Temps écoulé.');
           }
           else {
               if ( seconds_left >= 0 ) {
@@ -86,7 +113,7 @@ $.get('api/getStartEnd', function(data) {
               countdown.innerHTML = "<span>" + daysRestant + ":</span><span>" + hoursRestant + ":</span><span>" + minutesRestant + ":</span><span>" + secondsRestant + "</span>"; 
           }
               
-      }
+     
 });
 }
 setInterval(checkTimeLeft, 1000);

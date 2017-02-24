@@ -78,6 +78,7 @@ $.get('api/getStartEnd', function(data) {
 
     restant = daysRestant + hoursRestant + minutesRestant;
     
+    if((end-now) < 0) restant = 'vote terminé. ';
     
     $(" #debut ").text(debut);
     $(" #cloture ").text(cloture);
@@ -135,6 +136,7 @@ $.get('admin/getListVotes', function(data) {
     
     $('#dataTable').DataTable({
     dom: 'Blftipr',
+    "bSort": false,
     buttons: [
         'excel', 'csv', 'pdf'
     ],

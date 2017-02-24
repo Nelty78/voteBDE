@@ -3,7 +3,7 @@
 var userHandler = function (req, res) {
     
     var admin = ["baptiste.foulon@edu.escpeurope.eu", "clement.allouard@edu.escpeurope.eu", "francois.chapoulart@edu.escpeurope.eu",
-                    "leo.roux@edu.escpeurope.eu", "solene.pratmarty@edu.escpeurope.eu", "iheb.ben_abdallah@edu.escpeurope.eu"];
+                    "leo.roux@edu.escpeurope.eu"];
     
     this.extractProfile = function (profile) {
         var profile = { email: profile.emails[0].value,
