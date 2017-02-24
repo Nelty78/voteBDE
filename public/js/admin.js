@@ -78,6 +78,7 @@ $.get('api/getStartEnd', function(data) {
 
     restant = daysRestant + hoursRestant + minutesRestant;
     
+    if((now-start) < 0) restant = 'vote pas commencé. ';
     if((end-now) < 0) restant = 'vote terminé. ';
     
     $(" #debut ").text(debut);
