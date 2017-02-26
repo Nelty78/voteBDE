@@ -24,6 +24,15 @@ body {
   min-width: 100px;
 }
 
+.author {
+  color: #e0e0eb;
+  font-size: 80%;
+  position: absolute;
+  white-space: nowrap;
+  bottom: 5px;
+  right: 10px;
+}
+
 .admin {
   color: white;
   position: absolute;
